@@ -1,4 +1,4 @@
-# Manipulador com servo motor
+﻿# Manipulador com servo motor
 
 ### Proposta 
 O projeto tem a proposta de utilizar dois servos motores, de forma a ter-se uma garra,
@@ -17,6 +17,6 @@ analógica e um botão como entrada GPIO, de acordo com o ilustrado na figura 1.
 
 Figura 1: Diagrama de blocos da eletrônica
 ### Referências
-1. Ajuda na ideia de projeto dada pelo professor da cadeira de Microcontroladores (2018),
+1. Proposta de projeto dada pelo professor da cadeira de Microcontroladores (2018),
 Cap. Renault.
 2. [Manual de Referência STM32F4](http://www.st.com/content/ccc/resource/technical/document/reference_manual/3d/6d/5a/66/b4/99/40/d4/DM00031020.pdf/files/DM00031020.pdf/jcr:content/translations/en.DM00031020.pdf)
