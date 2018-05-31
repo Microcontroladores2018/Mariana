@@ -103,6 +103,19 @@ void EXTI0_IRQHandler(void) {
     }
 }
 
+//determina angulo de abertura
+void SetPWM(int pwm){
+	//variável pwm recebe valor calculado
+	//joga valor no pino PWM
+}
+
+//le valor da porta GPIOA3
+void ReadAnalog(){
+	//le valor analogico
+	//calcula valor por conversão
+	//manda valor p SetPWM()
+}
+
 int main(void)
 {
   int i = 0;
@@ -162,7 +175,6 @@ int main(void)
   TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
 
   GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);
-
 
   /* Infinite loop */
   while (1)
