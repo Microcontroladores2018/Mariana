@@ -93,6 +93,7 @@ void ConfigInt(){
 /* Set interrupt handlers */
 /* Handle PA0 interrupt */
 void EXTI0_IRQHandler(void) {
+	//interrupcao
     /* Make sure that interrupt flag is set */
     if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
         /* Do your stuff when PA0 is changed */
