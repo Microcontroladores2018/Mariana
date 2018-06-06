@@ -127,12 +127,13 @@ extern "C" void EXTI0_IRQHandler(void) {
 
 
 
-//le valor da porta GPIOA3
+/*//le valor da porta GPIOA3
 void ReadAnalog(){
 	//le valor analogico
 	//calcula valor por conversão
 	//manda valor p SetPWM()
 }
+*/
 
 // Inicia a conversao do ADC
 int ADC_Update()
@@ -209,7 +210,8 @@ int main(void)
 
 	while (1){
 		i++;
-		PWM(4200);
+		//PWM(4200);
+		TIM4->CCR3 = 4200;
 	}
 }
 
