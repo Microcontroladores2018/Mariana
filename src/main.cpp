@@ -60,6 +60,16 @@ void InitializeLEDs(){
 	gpioStructure.GPIO_OType = GPIO_OType_PP;
 	gpioStructure.GPIO_PuPd = GPIO_PuPd_UP;
 
+	//economia de energia
+	GPIO_InitTypeDef gpioStructure2;
+	gpioStructure2.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_13 | GPIO_Pin_15
+							| GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4
+							| GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_8 | GPIO_Pin_9;
+	gpioStructure2.GPIO_Mode = GPIO_Mode_AN;
+	gpioStructure2.GPIO_Speed = GPIO_Speed_100MHz;
+	gpioStructure2.GPIO_OType = GPIO_OType_PP;
+	gpioStructure2.GPIO_PuPd = GPIO_PuPd_UP;
+
 	GPIO_Init(GPIOD, &gpioStructure);
 
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource14, GPIO_AF_TIM4);

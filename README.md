@@ -23,6 +23,20 @@ Figura 1: Diagrama de blocos da eletrônica
 ### Fluxograma do firmware
 ![Screenshot](fluxograma.JPG)
 
+### Funções e variáveis
+### Variáveis
+- int period Periodo do timer
+- int duty Periodo em HIGH do PWM
+-
+### Funções
+- void InitializeTimer(int period) Inicializa o timer
+- void PWM(int duty) Inicializa PWM
+- void InitializeLEDs() Inicializa LEDs
+- void ConfigInt() Configura interrupção
+- extern "C" void EXTI0_IRQHandler(void) Executa a interrupção
+- int ADC_Update() Configuração ADC
+- void ADC_Init() Inicia conversão ADC
+
 ### Referências
 1. Proposta de projeto dada pelo professor da cadeira de Microcontroladores (2018),
 Cap. Renault.
