@@ -42,3 +42,4 @@ Figura 1: Diagrama de blocos da eletrônica
 Cap. Renault.
 2. [Manual de Referência STM32F4](http://www.st.com/content/ccc/resource/technical/document/reference_manual/3d/6d/5a/66/b4/99/40/d4/DM00031020.pdf/files/DM00031020.pdf/jcr:content/translations/en.DM00031020.pdf)
 3. [Projeto da Aluna Jéssica Aires, cadeira de Microcontroladores 2017, Instituto Militar de Engenharia.](https://gitlab.luizrenault.com/microcontroladores-2017/jessica/tree/master)
+4. Alunos Onias Castelo e Nicolas Oliveira.
