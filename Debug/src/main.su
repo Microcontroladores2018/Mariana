@@ -1,10 +1,8 @@
-main.cpp:17:6:void InitializeTimer(int)	32	static
-main.cpp:39:6:void PWM(int)	40	static
-main.cpp:53:6:void InitializeLEDs()	24	static
-main.cpp:78:6:void ConfigInt()	32	static
-main.cpp:126:17:void EXTI0_IRQHandler()	8	static
-main.cpp:149:5:int ADC_Update()	8	static
-main.cpp:161:6:void ADC_Init()	40	static
-main.cpp:192:5:int main()	16	static
-main.cpp:233:17:void EVAL_AUDIO_TransferComplete_CallBack(uint32_t, uint32_t)	16	static
-main.cpp:242:21:uint16_t EVAL_AUDIO_GetSampleCallBack()	4	static
+main.cpp:7:6:void InitializeTimer(int)	32	static
+main.cpp:22:6:void PWM(int)	40	static
+main.cpp:35:6:void InitializeLEDs()	24	static
+main.cpp:60:6:void ConfigInt()	32	static
+main.cpp:108:17:void EXTI0_IRQHandler()	8	static
+main.cpp:127:5:int main()	16	static
+main.cpp:158:17:void EVAL_AUDIO_TransferComplete_CallBack(uint32_t, uint32_t)	16	static
+main.cpp:167:21:uint16_t EVAL_AUDIO_GetSampleCallBack()	4	static

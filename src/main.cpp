@@ -2,17 +2,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4_discovery.h"
 
-
-//int duty=0;
-
-//void PWM(int duty);
-/* Funo de interrupo do Timer4, ou seja, roda de 20ms em 20ms */
-//extern "C" void TIM4_IRQHandler()
-//{
-	//TIM4->SR = 0; /* Zera a contagem quando esta chega a 57143 - 20ms */
-	//PWM(duty); /* Inicia o PWM com o duty cicle definido pelo valor da varivel duty */
-//}
-
+int j = 0;
 
 void InitializeTimer(int period = 55999){
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
@@ -27,13 +17,6 @@ void InitializeTimer(int period = 55999){
 
 	TIM_Cmd(TIM4, ENABLE);
 
-	   //NVIC_InitTypeDef nvicStructure; /* Estrutura para a configurao da estrutura de interrupo */
-	    //nvicStructure.NVIC_IRQChannel = TIM4_IRQn; /* Interrupo global do Timer 4 */
-	    //nvicStructure.NVIC_IRQChannelPreemptionPriority = 0; /* Prioridade 0 */
-	    //nvicStructure.NVIC_IRQChannelSubPriority = 1; /* Subprioridade 1 */
-	    //nvicStructure.NVIC_IRQChannelCmd = ENABLE; /* Habilita a interrupo */
-	    //NVIC_Init(&nvicStructure); /* Inicia a estrutura de interrupo */
-
 }
 
 void PWM(int duty = 500){
@@ -46,7 +29,6 @@ void PWM(int duty = 500){
 
 	TIM_OC3Init(TIM4, &outputChannelInit);
 	TIM_OC3PreloadConfig(TIM4, TIM_OCPreload_Enable);
-
 
 }
 
@@ -130,64 +112,17 @@ extern "C" void EXTI0_IRQHandler(void) {
         // Do your stuff when PA0 is changed */
         	GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
 
+        	TIM4->CCR3 = 6000 - 100*j;
+        	j++;
+
+        	if (j == 30 ){
+        		TIM4->CCR3 = 6000;
+        	}
+
         // Clear interrupt flag
         EXTI_ClearITPendingBit(EXTI_Line0);
     }
 }
-
-
-
-/*//le valor da porta GPIOA3
-void ReadAnalog(){
-	//le valor analogico
-	//calcula valor por conversão
-	//manda valor p SetPWM()
-}
-*/
-
-// Inicia a conversao do ADC
-int ADC_Update()
-{
-	 ADC_SoftwareStartConv(ADC1);
-
-	 while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC)){
-		 __WFI();
-	 }
-	 return ADC_GetConversionValue(ADC1);
-
-}
-
-// Configura ADC
-void ADC_Init()
-{
-	 ADC_InitTypeDef ADC_init_structure;
-	 GPIO_InitTypeDef GPIO_initStructre;
-	 // Configura Clock
-	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE);
-	 RCC_APB2PeriphClockLPModeCmd(RCC_APB2Periph_ADC1,DISABLE);
-	 RCC_AHB1PeriphClockCmd(RCC_AHB1ENR_GPIOCEN,ENABLE);
-	 // Configuracao do pino para analogico
-	 GPIO_initStructre.GPIO_Pin = GPIO_Pin_0;/* O canal 10 - pino PC0 */
-	 GPIO_initStructre.GPIO_Mode = GPIO_Mode_AN; /* Configurado como analgico */
-	 GPIO_initStructre.GPIO_PuPd = GPIO_PuPd_NOPULL;
-	 GPIO_Init(GPIOC,&GPIO_initStructre);
-
-	 ADC_DeInit();
-	 ADC_init_structure.ADC_DataAlign = ADC_DataAlign_Right;
-	 ADC_init_structure.ADC_Resolution = ADC_Resolution_12b;
-	 ADC_init_structure.ADC_ContinuousConvMode = ENABLE;
-	 ADC_init_structure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC1;
-	 ADC_init_structure.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;
-	 ADC_init_structure.ADC_NbrOfConversion = 1;
-	 ADC_init_structure.ADC_ScanConvMode = DISABLE;
-	 ADC_Init(ADC1,&ADC_init_structure);
-
-
-	 // Escolhe o canal e o sampling time
-	 ADC_RegularChannelConfig(ADC1,ADC_Channel_10,1,ADC_SampleTime_144Cycles);
-}
-
-
 
 int main(void)
 {
@@ -206,22 +141,12 @@ int main(void)
 
 	STM_EVAL_LEDInit(LED4);
 
-	/*
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_6;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_DOWN;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);*/
-
 	/* Infinite loop */
 
 	while (1){
 		i++;
 		//PWM(4200);
-		TIM4->CCR3 = 4200;
+		//TIM4->CCR3 = 4200;
 	}
 }
 

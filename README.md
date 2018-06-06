@@ -2,16 +2,18 @@
 
 ### Proposta 
 O projeto tem a proposta de utilizar dois servos motores, de forma a ter-se uma garra,
-cuja abertura é controlada por um potênciometro e por meio do acionamento de um botão
-a garra abre e fecha.
+cuja abertura é controlada por um botão que, a cada interrupção aumenta o valor do ângulo 
+do servo até um certo ponto, no qual volta ao início.
 Sua utilidade é pegar objetos e poderia ser parte de um projeto maior, o qual envolveria o
 deslocamento da garra. Isso facilitaria pessoas dentro de casa com dificuldade de locomoção
 a conseguirem pegar objetos distantes.
+O projeto foi implementado para apenas um servo, porém o segundo servo seria adicionado de maneira
+análoga (simétrica).
 
 ### Periféricos 
-A elaboração do projeto será feita com uma STM32F407Discovery. Serão utilizados
-dois servos motores com comunicação PWM simétrica, um potenciômetro como entrada
-analógica e um botão como entrada GPIO, de acordo com o ilustrado na figura 1.
+A elaboração do projeto será feita com uma STM32F407Discovery. Será utilizado
+um servos motor com comunicação PWM e um botão como entrada GPIO, de acordo com 
+o ilustrado na figura 1.
 
 ![Screenshot](diagrama.JPG)
 
@@ -26,16 +28,14 @@ Figura 1: Diagrama de blocos da eletrônica
 ### Funções e variáveis
 ### Variáveis
 - int period Periodo do timer
-- int duty Periodo em HIGH do PWM
--
+- int j Determina o ângulo do servo a cada interrupção
+
 ### Funções
 - void InitializeTimer(int period) Inicializa o timer
 - void PWM(int duty) Inicializa PWM
 - void InitializeLEDs() Inicializa LEDs
 - void ConfigInt() Configura interrupção
 - extern "C" void EXTI0_IRQHandler(void) Executa a interrupção
-- int ADC_Update() Configuração ADC
-- void ADC_Init() Inicia conversão ADC
 
 ### Referências
 1. Proposta de projeto dada pelo professor da cadeira de Microcontroladores (2018),
