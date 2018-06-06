@@ -18,10 +18,10 @@ analógica e um botão como entrada GPIO, de acordo com o ilustrado na figura 1.
 Figura 1: Diagrama de blocos da eletrônica
 
 ### Pinagem
-![Screenshot](pinagem.JPEG)
+![Screenshot](pinagem.JPG)
 
 ### Fluxograma do firmware
-![Screenshot](fluxograma.JPEG)
+![Screenshot](fluxograma.JPG)
 
 ### Referências
 1. Proposta de projeto dada pelo professor da cadeira de Microcontroladores (2018),
